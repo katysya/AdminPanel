@@ -5,6 +5,7 @@ import { PreLoader } from "../../../shared/index";
 interface Employee {
   name: string;
   email: string;
+  img: string;
   age: number;
   position: string;
   active: boolean;
@@ -156,6 +157,7 @@ const Employees = () => {
               key={index}
               name={item.name}
               email={item.email}
+              img={item.img}
               position={item.position}
               active={item.active}
             />

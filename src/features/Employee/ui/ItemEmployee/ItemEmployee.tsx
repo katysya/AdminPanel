@@ -3,13 +3,20 @@ import { FC } from "react";
 interface IItemEmployee {
   name: String;
   email: String;
+  img: String;
   position: String;
   active: Boolean;
 }
 
-import test from "../../assets/images/employee-1.webp";
+const ItemEmployee: FC<IItemEmployee> = ({
+  name,
+  email,
+  img,
+  position,
+  active,
+}) => {
+  console.log(img);
 
-const ItemEmployee: FC<IItemEmployee> = ({ name, email, position, active }) => {
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
       <td className="w-4 p-4">
@@ -28,7 +35,7 @@ const ItemEmployee: FC<IItemEmployee> = ({ name, email, position, active }) => {
         scope="row"
         className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
       >
-        <img className="w-10 h-10 rounded-full" src={test} alt="Jese image" />
+        <img className="w-10 h-10 rounded-full" src={img} alt="Jese image" />
         <div className="ps-3">
           <div className="text-base font-semibold">{name}</div>
           <div className="font-normal text-gray-500">{email}</div>
