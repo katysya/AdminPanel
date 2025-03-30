@@ -7,6 +7,8 @@ interface IItemEmployee {
   active: Boolean;
 }
 
+import test from "../../assets/images/employee-1.webp";
+
 const ItemEmployee: FC<IItemEmployee> = ({ name, email, position, active }) => {
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -26,11 +28,7 @@ const ItemEmployee: FC<IItemEmployee> = ({ name, email, position, active }) => {
         scope="row"
         className="flex items-center px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
       >
-        <img
-          className="w-10 h-10 rounded-full"
-          src="/docs/images/people/profile-picture-1.jpg"
-          alt="Jese image"
-        />
+        <img className="w-10 h-10 rounded-full" src={test} alt="Jese image" />
         <div className="ps-3">
           <div className="text-base font-semibold">{name}</div>
           <div className="font-normal text-gray-500">{email}</div>

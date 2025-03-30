@@ -1,0 +1,53 @@
+{
+  "employees": [
+    {
+      "name": "Neil Sims",
+      "email": "neil.sims@flowbite.com",
+      "age": 30,
+      "position": "React Developer",
+      "active": true
+    },
+    {
+      "name": "Bonnie Green",
+      "email": "bonnie@flowbite.com",
+      "age": 25,
+      "position": "Designer",
+      "active": true
+    },
+    {
+      "name": "Bonnie Green",
+      "email": "bonnie@flowbite.com",
+      "age": 25,
+      "position": "Designer",
+      "active": false
+    },
+    {
+      "name": "Bonnie Green",
+      "email": "bonnie@flowbite.com",
+      "age": 25,
+      "position": "Designer",
+      "active": true
+    },
+    {
+      "name": "Bonnie Green",
+      "email": "bonnie@flowbite.com",
+      "age": 25,
+      "position": "Designer",
+      "active": false
+    },
+    {
+      "name": "Bonnie Green",
+      "email": "bonnie@flowbite.com",
+      "age": 25,
+      "position": "Designer",
+      "active": true
+    },
+    {
+      "name": "Bonnie Green",
+      "email": "bonnie@flowbite.com",
+      "age": 25,
+      "position": "Designer",
+      "active": false
+    }
+  ]
+}
