@@ -1,10 +1,10 @@
 import { FC } from "react";
 
 interface IItemEmployee {
-  name: String;
-  email: String;
-  img: String;
-  position: String;
+  name: string;
+  email: string;
+  img: string;
+  position: string;
   active: Boolean;
 }
 
@@ -15,8 +15,6 @@ const ItemEmployee: FC<IItemEmployee> = ({
   position,
   active,
 }) => {
-  console.log(img);
-
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
       <td className="w-4 p-4">
@@ -57,7 +55,6 @@ const ItemEmployee: FC<IItemEmployee> = ({
         <a
           href="#"
           type="button"
-          data-modal-target="editUserModal"
           data-modal-show="editUserModal"
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
         >
