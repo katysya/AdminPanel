@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { TableEmployee, ItemEmployee } from "@/features/Employee";
-import { PreLoader } from "../../../shared/index";
+import { PreLoader } from "@/shared/index";
+import { Modal } from "flowbite";
 
 interface Employee {
   name: string;
@@ -15,6 +16,8 @@ const Employees = () => {
   const [employees, setEmployees] = useState<Employee[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  const EditUserModalRef = useRef<HTMLDivElement | null>(null);
+  const modalRef = useRef<Modal | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -34,6 +37,25 @@ const Employees = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (EditUserModalRef.current) {
+      modalRef.current = new Modal(EditUserModalRef.current);
+      modalRef.current.hide();
+    }
+  }, [employees]);
+
+  const toggleModal = () => {
+    if (modalRef.current && EditUserModalRef.current) {
+      const modal = modalRef.current;
+
+      if (EditUserModalRef.current.classList.contains("hidden")) {
+        modal.show();
+      } else {
+        modal.hide();
+      }
+    }
+  };
 
   if (loading) {
     return <PreLoader />;
@@ -161,12 +183,14 @@ const Employees = () => {
               img={item.img}
               position={item.position}
               active={item.active}
+              openModal={toggleModal}
             />
           ))}
         </TableEmployee>
 
         <div
           id="editUserModal"
+          ref={EditUserModalRef}
           tabIndex={-1}
           aria-hidden="true"
           className="fixed top-0 left-0 right-0 z-50 items-center justify-center hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full"
@@ -181,6 +205,7 @@ const Employees = () => {
                 </h3>
                 <button
                   type="button"
+                  onClick={toggleModal}
                   className="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                   data-modal-hide="editUserModal"
                 >

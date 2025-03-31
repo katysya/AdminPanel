@@ -6,6 +6,7 @@ interface IItemEmployee {
   img: string;
   position: string;
   active: Boolean;
+  openModal: () => void;
 }
 
 const ItemEmployee: FC<IItemEmployee> = ({
@@ -14,6 +15,7 @@ const ItemEmployee: FC<IItemEmployee> = ({
   img,
   position,
   active,
+  openModal,
 }) => {
   return (
     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -57,7 +59,9 @@ const ItemEmployee: FC<IItemEmployee> = ({
           type="button"
           data-modal-show="editUserModal"
           data-modal-target="editUserModal"
+          data-modal-toggle="editUserModal"
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          onClick={openModal}
         >
           Edit user
         </a>
