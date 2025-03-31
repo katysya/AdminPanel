@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import Logo from "../assets/images/logo.svg";
 import { AppRoutes } from "@/app/providers/router";
 
+import Avatar from "../assets/images/avatar.webp";
+
 const SideBar = () => {
   return (
     <div>
@@ -50,7 +52,7 @@ const SideBar = () => {
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="w-8 h-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                      src={Avatar}
                       alt="user photo"
                     />
                   </button>

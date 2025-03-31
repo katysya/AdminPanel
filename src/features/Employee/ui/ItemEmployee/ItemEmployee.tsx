@@ -56,6 +56,7 @@ const ItemEmployee: FC<IItemEmployee> = ({
           href="#"
           type="button"
           data-modal-show="editUserModal"
+          data-modal-target="editUserModal"
           className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
         >
           Edit user
