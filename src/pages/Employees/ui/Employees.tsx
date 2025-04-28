@@ -28,7 +28,8 @@ const Employees = () => {
   const [error, setError] = useState<string | null>(null);
   const EditUserModalRef = useRef<HTMLDivElement | null>(null);
   const modalRef = useRef<Modal | null>(null);
-  const limit = 10;
+  const [allCountEmployees, setAllCountEmployees] = useState(0);
+  const limit = 5;
   const sortBy = "name";
   const sortOrder = "asc";
 
@@ -50,7 +51,9 @@ const Employees = () => {
           throw new Error("...");
         }
         const result = await response.json();
+        const totalCount = response.headers.get("X-Total-Count");
         setEmployees(result);
+        setAllCountEmployees(Number(totalCount));
       } catch (error: any) {
         setError(error.message);
       } finally {
@@ -81,6 +84,34 @@ const Employees = () => {
 
   const searchWordFetch = async (word: string) => {
     setParams((prev) => ({ ...prev, search: word, page: 1 }));
+  };
+
+  const changeCurrentPagePagination = (e: any) => {
+    let target = e.target as HTMLElement;
+
+    while (target && !target.innerText && target.parentElement) {
+      target = target.parentElement;
+    }
+
+    const currentpage = params.page;
+    const text = target.innerText.toLowerCase();
+
+    if (currentpage === Number(text)) return;
+
+    switch (text) {
+      case "next":
+        if (currentpage < allCountEmployees / params.limit) {
+          setParams((prev) => ({ ...prev, page: currentpage + 1 }));
+        }
+        break;
+      case "prev":
+        if (currentpage > 1) {
+          setParams((prev) => ({ ...prev, page: currentpage - 1 }));
+        }
+        break;
+      default:
+        setParams((prev) => ({ ...prev, page: Number(e.target.innerText) }));
+    }
   };
 
   if (loading) {
@@ -304,7 +335,11 @@ const Employees = () => {
         </div>
       </div>
 
-      <PaginationEmployee />
+      <PaginationEmployee
+        currentPage={params.page}
+        allPages={Math.ceil(allCountEmployees / params.limit)}
+        change={changeCurrentPagePagination}
+      />
     </div>
   );
 };
